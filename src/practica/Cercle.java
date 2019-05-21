@@ -23,7 +23,7 @@ public class Cercle {
 
     public Cercle() {
         pos = new Vector(aleatoriInt(525), aleatoriInt(525));
-        vel = new Vector(0.2, 1);
+        vel = new Vector(0.1, 1.5);
         acc = new Vector(0, 0.008);
     }
 
@@ -85,7 +85,7 @@ public class Cercle {
             }else if(vel.getY()<velMin.getX()){
                 vel = new Vector(vel.getX(),velMin.getY());
             }
-            System.out.println(vel);
+            
             pos.suma(vel);
             if (!PanellCercles.parets) {
                 interaccioLimitsSenseParets();
@@ -110,7 +110,6 @@ public class Cercle {
                 vel = new Vector(vel.getX(),velMin.getY());
             }
             pos.suma(vel);
-            System.out.println(vel);
             if (!PanellCercles.parets) {
                 interaccioLimitsSenseParets();
             } else {
@@ -121,24 +120,24 @@ public class Cercle {
     }
 
     public void interaccioLimitsParets() {
-        if (pos.getX() > Practica.DIMENSIO - 50 || pos.getX() < 0) {
+        if (pos.getX() > Practica.DIMENSIOX - 350 || pos.getX() < 0) {
             vel = new Vector(-vel.getX(), vel.getY());
         }
-        if (pos.getY() > Practica.DIMENSIO - 50 || pos.getY() < 0) {
+        if (pos.getY() > Practica.DIMENSIOY - 50 || pos.getY() < 0) {
             vel = new Vector(vel.getX(), -vel.getY());
         }
     }
 
     public void interaccioLimitsSenseParets() {
-        if (pos.getX() > Practica.DIMENSIO) {
+        if (pos.getX() > Practica.DIMENSIOX - 350) {
             pos = new Vector(0, pos.getY());
         } else if (pos.getX() < 0) {
-            pos = new Vector(Practica.DIMENSIO, pos.getY());
+            pos = new Vector(Practica.DIMENSIOX, pos.getY());
         }
-        if (pos.getY() > Practica.DIMENSIO) {
+        if (pos.getY() > Practica.DIMENSIOY- 60) {
             pos = new Vector(pos.getX(), 0);
         } else if (pos.getY() < 0) {
-            pos = new Vector(pos.getX(), Practica.DIMENSIO);
+            pos = new Vector(pos.getX(), Practica.DIMENSIOY);
         }
     }
 
