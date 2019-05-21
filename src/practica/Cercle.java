@@ -5,6 +5,7 @@
  */
 package practica;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -22,8 +23,8 @@ public class Cercle {
 
     public Cercle() {
         pos = new Vector(aleatoriInt(525), aleatoriInt(525));
-        vel = new Vector(0, 1);
-        acc = new Vector(0, 0.005);
+        vel = new Vector(0.2, 1);
+        acc = new Vector(0, 0.008);
     }
 
     public int getDiametre() {
@@ -57,16 +58,34 @@ public class Cercle {
     public void paint(Graphics2D g2) {
         Ellipse2D.Double c1 = new Ellipse2D.Double(this.getPos().getX(),
                 this.getPos().getY(), this.getDiametre(), this.getDiametre());
-
+        
+        g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(5));  
+        g2.draw(c1);
         Color col = this.getCol();
         g2.setColor(col);
         g2.fill(c1);
+        
     }
 
     public void actualitzaPosicio() {
+        
+        Vector velMax = new Vector(4,3);
+        Vector velMin = new Vector(-4,-3);
 
         if (!PanellCercles.seguirRatoli) {
             vel.suma(acc);
+            if(vel.getX()>velMax.getX()){
+                vel = new Vector(velMax.getX(),vel.getY());
+            }else if(vel.getX()<velMin.getX()){
+                vel = new Vector(velMin.getX(),vel.getY());
+            }
+            if(vel.getY()>velMax.getY()){
+                vel = new Vector(vel.getX(),velMax.getY());
+            }else if(vel.getY()<velMin.getX()){
+                vel = new Vector(vel.getX(),velMin.getY());
+            }
+            System.out.println(vel);
             pos.suma(vel);
             if (!PanellCercles.parets) {
                 interaccioLimitsSenseParets();
@@ -75,11 +94,23 @@ public class Cercle {
             }
 
         } else { // seguir ratolí
-            double mX = PanellCercles.mouseX;
-            double mY = PanellCercles.mouseY;
-            Vector mouse = new Vector(mX,mY);
-            pos = mouse.resta(pos);
+            Vector posMouse = new Vector(PanellCercles.mouseX,PanellCercles.mouseY);
+            acc = posMouse.resta(pos);  //acc centrípeta
+            acc.limitar(0.1, 0.1);
             
+            vel.suma(acc);
+            if(vel.getX()>velMax.getX()){
+                vel = new Vector(velMax.getX(),vel.getY());
+            }else if(vel.getX()<velMin.getX()){
+                vel = new Vector(velMin.getX(),vel.getY());
+            }
+            if(vel.getY()>velMax.getY()){
+                vel = new Vector(vel.getX(),velMax.getY());
+            }else if(vel.getY()<velMin.getX()){
+                vel = new Vector(vel.getX(),velMin.getY());
+            }
+            pos.suma(vel);
+            System.out.println(vel);
             if (!PanellCercles.parets) {
                 interaccioLimitsSenseParets();
             } else {

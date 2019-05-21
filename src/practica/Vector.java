@@ -73,5 +73,16 @@ public class Vector {
         X = limitX*X;
         Y = limitY*Y;
     }
+
+    @Override
+    public String toString() {
+        return "Vector{" + "X=" + X + ", Y=" + Y + '}';
+    }
+    
+//    public boolean mayorX(Vector v){
+//        if(this.X > v.getX()){
+//            return
+//        }
+//    }
     
 }

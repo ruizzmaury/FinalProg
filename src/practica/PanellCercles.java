@@ -38,7 +38,6 @@ public class PanellCercles extends JPanel implements ActionListener, MouseMotion
         while (true) {
             for (int i = 0; i < c.length; i++) {
                 c[i].actualitzaPosicio();
-
                 repaint();
             }
             try {

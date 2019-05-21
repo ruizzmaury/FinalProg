@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 
 public class Practica extends JFrame {
     
-    public static int DIMENSIO = 600;
+    public static int DIMENSIO = 800;
     public static PanellCercles p;
     
     public Practica(){
