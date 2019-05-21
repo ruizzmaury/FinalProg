@@ -101,7 +101,6 @@ public class PanellCercles extends JPanel implements ActionListener, MouseMotion
 //        
 //    }
     
-    
     @Override
     public void actionPerformed(ActionEvent e) {  
         
