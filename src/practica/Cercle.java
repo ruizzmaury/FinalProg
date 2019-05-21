@@ -23,7 +23,7 @@ public class Cercle {
 
     public Cercle() {
         pos = new Vector(aleatoriInt(525), aleatoriInt(525));
-        vel = new Vector(0.1, 1.5);
+        vel = new Vector(0.1, 1);
         acc = new Vector(0, 0.008);
     }
 
