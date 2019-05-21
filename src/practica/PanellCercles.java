@@ -26,7 +26,7 @@ import javax.swing.JTextField;
 public class PanellCercles extends JPanel implements ActionListener, MouseMotionListener {
 
     private Cercle c[];
-    private int numBolles =50;
+    private int numBolles =10;
     public static double mouseX, mouseY;
     public static boolean parets;
     public static boolean seguirRatoli;
