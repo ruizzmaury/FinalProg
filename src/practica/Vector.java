@@ -7,27 +7,27 @@ package practica;
 
 public class Vector {
     
-    private int X;
-    private int Y;
+    private double X;
+    private double Y;
     
-    public Vector(int x,int y){
+    public Vector(double x,double y){
         X = x;
         Y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return X;
     }
 
-    public int getY() {
+    public double getY() {
         return Y;
     }
 
-    public void setX(int X) {
+    public void setX(double X) {
         this.X = X;
     }
 
-    public void setY(int Y) {
+    public void setY(double Y) {
         this.Y = Y;
     }
     
@@ -47,12 +47,12 @@ public class Vector {
         return u;
     }
     
-    public void producteEscalar(int a){
+    public void producteEscalar(double a){
         X = a*X;
         Y = a*Y;
     }
     
-    public void divisioEscalar(int a){
+    public void divisioEscalar(double a){
         X = X/a;
         Y = Y/a;
     }
@@ -63,12 +63,12 @@ public class Vector {
     }
     
     public void normalizar(){
-        int m = (int)modul();
+        double m = modul();
         X = X/m;
         Y = Y/m;
     }
     
-    public void limitar(int limitX, int limitY){
+    public void limitar(double limitX, double limitY){
         normalizar();
         X = limitX*X;
         Y = limitY*Y;

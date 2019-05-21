@@ -5,23 +5,30 @@
  */
 package practica;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionListener;
 import javax.swing.JFrame;
 
 public class Practica extends JFrame {
     
     public static int DIMENSIO = 600;
+    public static PanellCercles p;
     
     public Practica(){
         this.setTitle("Flying Balls");
         this.setSize(DIMENSIO,DIMENSIO);
         this.setResizable(true);
+        
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        PanellCercles p = new PanellCercles();
+        p = new PanellCercles();
         this.add(p);
     }
     
     public static void main(String[] args) {
         (new Practica()).setVisible(true);
+        p.simulacio();
     }
+
+    
     
 }
