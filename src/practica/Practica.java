@@ -11,10 +11,11 @@ import javax.swing.JFrame;
 
 public class Practica extends JFrame {
     
-    public static int DIMENSIOX = 950;
-    public static int DIMENSIOY = 600;
+    public static int DIMENSIOX = 1400;
+    public static int DIMENSIOY = 900;
     public static PanellCercles p;
-    
+    public static InterficiePanel i;
+
     
     
     public Practica(){
@@ -22,11 +23,13 @@ public class Practica extends JFrame {
         this.setSize(DIMENSIOX,DIMENSIOY);
         this.setResizable(false);
         
+
         
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         p = new PanellCercles();
         this.add(p);
-        
+        i = new InterficiePanel();
+        this.add(i);
     }
     
     

@@ -10,8 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Cercle {
 
@@ -23,8 +22,8 @@ public class Cercle {
 
     public Cercle() {
         pos = new Vector(aleatoriInt(525), aleatoriInt(525));
-        vel = new Vector(0.1, 1);
-        acc = new Vector(0, 0.008);
+        vel = new Vector(0, 0);
+        acc = new Vector(0, 0.005);
     }
 
     public int getDiametre() {
@@ -96,7 +95,7 @@ public class Cercle {
         } else { // seguir ratolí
             Vector posMouse = new Vector(PanellCercles.mouseX,PanellCercles.mouseY);
             acc = posMouse.resta(pos);  //acc centrípeta
-            acc.limitar(0.1, 0.1);
+            acc.limitar(0.03, 0.05);
             
             vel.suma(acc);
             if(vel.getX()>velMax.getX()){
@@ -120,21 +119,21 @@ public class Cercle {
     }
 
     public void interaccioLimitsParets() {
-        if (pos.getX() > Practica.DIMENSIOX - 350 || pos.getX() < 0) {
+        if (pos.getX() > Practica.DIMENSIOX - InterficiePanel.WIDTH+10 || pos.getX() < 0) {
             vel = new Vector(-vel.getX(), vel.getY());
         }
-        if (pos.getY() > Practica.DIMENSIOY - 50 || pos.getY() < 0) {
+        if (pos.getY() > Practica.DIMENSIOY - this.getDiametre() || pos.getY() < 0) {
             vel = new Vector(vel.getX(), -vel.getY());
         }
     }
 
     public void interaccioLimitsSenseParets() {
-        if (pos.getX() > Practica.DIMENSIOX - 350) {
+        if (pos.getX() > Practica.DIMENSIOX - InterficiePanel.WIDTH+10 ) {
             pos = new Vector(0, pos.getY());
         } else if (pos.getX() < 0) {
             pos = new Vector(Practica.DIMENSIOX, pos.getY());
         }
-        if (pos.getY() > Practica.DIMENSIOY- 60) {
+        if (pos.getY() > Practica.DIMENSIOY- this.getDiametre()) {
             pos = new Vector(pos.getX(), 0);
         } else if (pos.getY() < 0) {
             pos = new Vector(pos.getX(), Practica.DIMENSIOY);
